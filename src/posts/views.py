@@ -10,9 +10,10 @@ def post_create(request):
 def post_detail(request):#basically retreive
 	instance=get_object_or_404(Post,id=4)
 	context={
-		"title": "Detail"
+		"title":instance.title,
+		"instance":instance,
 	}
-	return render(request,"index.html",context)
+	return render(request,"post_detail.html",context)
 
 def post_list(request):# items in the list
 	#if request.user.is_authenticated():
