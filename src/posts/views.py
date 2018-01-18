@@ -5,8 +5,16 @@ from .forms import PostForm
 from .models import Post
 
 def post_create(request):
-	form=PostForm()
-	context={
+	form=PostForm(request.POST or None)
+	if form.is_valid():
+		instance =form.save(commit=False)
+		print form.cleaned_data.get("title")
+		instance.save()
+	#if request.method == "POST":
+		#print "title" + request.POST.get("content")
+		#print request.POST.get("title")
+		#Post.objects.create(title = title)
+	context={ 
 		"form":form,
 	}
 	return render(request,"post_form.html",context)
