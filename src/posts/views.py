@@ -13,8 +13,6 @@ def post_create(request):
 		instance.save()
 		messages.success(request, "Successfully created")
 		return HttpResponseRedirect(instance.get_absolute_url())
-	else:
-		messages.error(request, "Not Successfully created")
 	#if request.method == "POST":
 		#print "title" + request.POST.get("content")
 		#print request.POST.get("title")
@@ -46,7 +44,7 @@ def post_list(request):# items in the list
 			"object_list":queryset,
 			"title":"List"
 	}
-	return render(request,"index.html",context)
+	return render(request,"post_list.html",context)
 	#return HttpResponse("<h1>List</h1>")
 def post_update(request, id =None):
 	instance=get_object_or_404(Post,id=id)
