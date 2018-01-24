@@ -1,16 +1,16 @@
-<!--DOCTYPE html -->
-<html>
+{% extends "base.html" %}
 
-<body>
+{% block head_title %} {{instance.title}} | {{block.super}} {% endblock head_title %}
 
-{% if messages %}
-<ul class="messages">
-	{% for message in messages %}
-	<li{% if message.tags %} class="{{message.tags}}"{% endif %}>{% if "html_safe" in message.tags %}{{message| safe}}{% else %}{{ message }}{% endif %}</li>
-	{% endfor %}
-</ul>
-{% endif %}
+<style>
+{% block style %}
+h1{
+color:#7777
+}
+{% endblock style %}
+</style>
 
+{% block content %}
 <h1> {{title}}</h1>
 
 
@@ -20,6 +20,5 @@
 {{instance.updated}}<br/>
 {{instance.id}}<br/>
 
-</body>
+{% endblock content %}
 
-</html>
